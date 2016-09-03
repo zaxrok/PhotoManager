@@ -9,23 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('angular2/core');
-var ipc_renderer_service_1 = require('./services/ipc-renderer.service');
-var ipc = new ipc_renderer_service_1.IpcRendererService();
-ipc.send('folderContent', '~');
-ipc.on('folderContent', function (files) {
-    console.log(files);
-});
-var AppComponent = (function () {
-    function AppComponent() {
+var IpcRendererService = (function () {
+    function IpcRendererService() {
+        this.ipcRenderer = electron.ipcRenderer;
     }
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'app',
-            template: '<h1>Hello</h1>'
-        }), 
+    IpcRendererService.prototype.on = function (message, callback) {
+        this.ipcRenderer.on(message, callback);
+    };
+    IpcRendererService.prototype.send = function (message) {
+        var args = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            args[_i - 1] = arguments[_i];
+        }
+        this.ipcRenderer.send(message, args);
+    };
+    IpcRendererService = __decorate([
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], IpcRendererService);
+    return IpcRendererService;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.IpcRendererService = IpcRendererService;
+//# sourceMappingURL=ipc-renderer.service.js.map

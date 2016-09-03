@@ -1,4 +1,6 @@
 const electron = require('electron');
+const bootstrap = require('./shell/bootstrap');
+
 // Module to control application life.
 const {app} = electron;
 // Module to create native browser window.
@@ -16,7 +18,7 @@ function createWindow() {
   win.loadURL(`file://${__dirname}/main.html`);
 
   // Open the DevTools.
-//   win.webContents.openDevTools();
+  win.webContents.openDevTools();
 
   // Emitted when the window is closed.
   win.on('closed', () => {
