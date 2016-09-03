@@ -3,10 +3,12 @@
 const {ipcMain} = require('electron');
 const readChunk = require('read-chunk');
 const fileType = require('file-type');
+const _ = require('lodash');
 var fs = require('fs');
 
 
 ipcMain.on('folderContent', (event, path) => {
+    path = _.isArray(path) && path.length > 0 ? path[0] : path;
     getFolderContent(path).then(function(files) {
         event.sender.send('folderContent', files);
     });
@@ -21,7 +23,7 @@ function getFolderContent(path) {
 
             data.forEach(function(element) {
                 if (!element.match(/$\./)) {
-                    files.push(path);
+                    files.push(element);
                     //files.push(getFileInformation(path, element));
                 }
             }, this);

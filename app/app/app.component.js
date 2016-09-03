@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('angular2/core');
 var ipc_renderer_service_1 = require('./services/ipc-renderer.service');
 var ipc = new ipc_renderer_service_1.IpcRendererService();
-ipc.send('folderContent', '~');
-ipc.on('folderContent', function (files) {
+ipc.send('folderContent', '/Users');
+ipc.on('folderContent', function (event, files) {
     console.log(files);
 });
 var AppComponent = (function () {
