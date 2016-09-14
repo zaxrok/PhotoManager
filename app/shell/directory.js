@@ -6,7 +6,6 @@ const fileType = require('file-type');
 const _ = require('lodash');
 var fs = require('fs');
 
-
 ipcMain.on('folderContent', (event, path) => {
     path = _.isArray(path) && path.length > 0 ? path[0] : path;
     getFolderContent(path).then(function(files) {

@@ -3,6 +3,7 @@ import {IpcRendererService} from './services/ipc-renderer.service';
 
 var ipc = new IpcRendererService();
 ipc.send('folderContent', '/Users');
+ipc.test();
 ipc.on('folderContent', (event, files) => {
 	console.log(files);
 });
