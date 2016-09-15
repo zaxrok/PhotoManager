@@ -7,12 +7,14 @@
     "build": "webpack --progress --profile --colors --display-error-details --display-cached",
     "watch": "webpack --watch --progress --profile --colors --display-error-details --display-cached",
     "electron": "electron .",
-    "install_typings": "typings install"
+    "install_typings": "typings install",
+    "rebuild": "electron-rebuild"
   },
   "author": "Sascha Karnatz",
   "license": "MIT",
   "devDependencies": {
     "electron-prebuilt": "^1.2.5",
+    "electron-rebuild": "^1.2.1",
     "es6-shim": "^0.34.0",
     "ts-loader": "^0.7.2",
     "typescript": "^1.7.3",
@@ -26,9 +28,14 @@
     "file-type": "^3.8.0",
     "lodash": "^4.15.0",
     "read-chunk": "^2.0.0",
-    "reflect-metadata": "^0.1.3",
-    "rxjs": "^5.0.0-beta.10",
     "watson-developer-cloud": "^2.2.0",
-    "zone.js": "^0.6.12"
+    "zone.js": "^0.6.12",
+    "bluebird": "^3.4.6",
+    "google-tts-api": "0.0.1",
+    "lame": "^1.2.4",
+    "node-tts-google": "0.0.1",
+    "request": "^2.74.0",
+    "say": "^0.9.1",
+    "speaker": "^0.3.0"
   }
 }
